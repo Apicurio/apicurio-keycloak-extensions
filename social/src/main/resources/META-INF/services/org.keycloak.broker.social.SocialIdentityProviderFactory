@@ -16,3 +16,4 @@
 #
 
 io.apicurio.kc.ext.social.LocalGitLabIdentityProviderFactory
+io.apicurio.kc.ext.social.LocalGitHubIdentityProviderFactory
