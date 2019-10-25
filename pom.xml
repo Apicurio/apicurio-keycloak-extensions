@@ -85,7 +85,7 @@
         <version.scala-maven.plugin>4.0.1</version.scala-maven.plugin>
 
         <!-- Dependency Versions -->
-        <version.org.keycloak>6.0.1</version.org.keycloak>
+        <version.org.keycloak>7.0.1</version.org.keycloak>
         <version.com.fasterxml.jackson.core>2.9.8</version.com.fasterxml.jackson.core>
     </properties>
 
