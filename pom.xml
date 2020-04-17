@@ -5,7 +5,7 @@
 
     <groupId>io.apicurio</groupId>
     <artifactId>apicurio-keycloak-extensions</artifactId>
-    <version>6.0.0-SNAPSHOT</version>
+    <version>9.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>apicurio-keycloak-extensions</name>
 
@@ -85,8 +85,9 @@
         <version.scala-maven.plugin>4.0.1</version.scala-maven.plugin>
 
         <!-- Dependency Versions -->
-        <version.org.keycloak>7.0.1</version.org.keycloak>
         <version.com.fasterxml.jackson.core>2.9.8</version.com.fasterxml.jackson.core>
+        <version.jboss.logging>3.4.1.Final</version.jboss.logging>
+        <version.org.keycloak>9.0.3</version.org.keycloak>
     </properties>
 
     <dependencyManagement>
@@ -105,6 +106,11 @@
                 <groupId>org.keycloak</groupId>
                 <artifactId>keycloak-services</artifactId>
                 <version>${version.org.keycloak}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging</artifactId>
+                <version>${version.jboss.logging}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
