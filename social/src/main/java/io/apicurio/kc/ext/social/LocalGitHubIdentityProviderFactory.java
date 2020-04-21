@@ -34,7 +34,7 @@ public class LocalGitHubIdentityProviderFactory
 
     @Override
     public String getName() {
-        return "GitHub (Local)";
+        return "GitHub Enterprise";
     }
 
     @Override   

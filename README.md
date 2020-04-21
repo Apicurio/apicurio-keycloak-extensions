@@ -48,7 +48,7 @@ The following are steps to using this provider:
 -Dapicurio.hub.github.apiUrl=https://api.github.com
 ```
 > (Obviously change the above values to be your local GitHub Enterprise installation rather than the public URLs)
-4. When configuring Keycloak, you will now have two *GitHub* options when creating the Identity Provider. Instead of choosing *GitHub* (or *OpenID Connect v1.0*) instead choose **GitHub (Local)**.
+4. When configuring Keycloak, you will now have two *GitHub* options when creating the Identity Provider. Instead of choosing *GitHub* (or *OpenID Connect v1.0*) instead choose **GitHub Enterprise**.
 5. All other configuration is the same as documented for configuring public GitHub integration.
 
 The result of doing this is that you will be using a custom GitHub Identity provider implementation 
