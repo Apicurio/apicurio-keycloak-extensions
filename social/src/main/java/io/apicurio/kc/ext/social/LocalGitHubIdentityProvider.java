@@ -30,7 +30,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
 /**
- * A version of the GiHub identity provider that supports a local installation of GitHub Enterprise.
+ * A version of the GitHub identity provider that supports a local installation of GitHub Enterprise.
  * @author eric.wittmann@gmail.com
  */
 public class LocalGitHubIdentityProvider extends GitHubIdentityProvider {
