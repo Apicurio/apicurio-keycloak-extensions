@@ -26,8 +26,8 @@ import org.keycloak.models.KeycloakSession;
 import org.keycloak.social.github.GitHubIdentityProvider;
 
 /**
- * Provider factory for the local github identity provider.
- * 
+ * Provider factory for the local github Enterprise identity provider.
+ *
  * @author eric.wittmann@gmail.com
  */
 public class LocalGitHubIdentityProviderFactory
