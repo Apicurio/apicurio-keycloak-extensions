@@ -18,7 +18,6 @@ package io.apicurio.kc.ext.social;
 
 import org.jboss.logging.Logger;
 import org.keycloak.broker.oidc.OAuth2IdentityProviderConfig;
-import org.keycloak.broker.oidc.OIDCIdentityProviderConfig;
 import org.keycloak.broker.provider.AbstractIdentityProviderFactory;
 import org.keycloak.broker.social.SocialIdentityProviderFactory;
 import org.keycloak.models.IdentityProviderModel;
@@ -43,7 +42,7 @@ public class LocalGitHubIdentityProviderFactory
 
     @Override
     public GitHubIdentityProvider create(KeycloakSession session, IdentityProviderModel model) {
-        return new LocalGitHubIdentityProvider(session, new OIDCIdentityProviderConfig(model));
+        return new LocalGitHubIdentityProvider(session, new OAuth2IdentityProviderConfig(model));
     }
 
     @Override
@@ -51,46 +50,10 @@ public class LocalGitHubIdentityProviderFactory
         return "github";
     }
 
-    @SuppressWarnings("unchecked") // safe b/c OAuth2IdentityProviderConfig does extend IdentityProviderModel
+    @SuppressWarnings("unchecked") // safe b/c OAuth2IdentityProviderConfig extends IdentityProviderModel
     @Override
-    public <C extends IdentityProviderModel> C createConfig() {
-        OAuth2IdentityProviderConfig config = new OIDCIdentityProviderConfig();
-
-        // The Base URL: https://github.com
-        String baseUrl = config.getConfig().get("baseUrl");
-        if (baseUrl == null || baseUrl.trim().isEmpty()) {
-            baseUrl = System.getProperty("apicurio.hub.github.baseUrl");
-        }
-        if (baseUrl == null || baseUrl.trim().isEmpty()) {
-            baseUrl = "https://github.com";
-        }
-        if (baseUrl.endsWith("/")) {
-            baseUrl = baseUrl.substring(0, baseUrl.length() - 1);
-        }
-        logger.infov("GitHub Enterprise Base URL: {}",  baseUrl);
-
-        // The Base URL: https://api.github.com
-        String apiUrl = config.getConfig().get("apiUrl");
-        if (apiUrl == null || apiUrl.trim().isEmpty()) {
-            apiUrl = System.getProperty("apicurio.hub.github.apiUrl");
-        }
-        if (apiUrl == null || apiUrl.trim().isEmpty()) {
-            apiUrl = "https://api.github.com";
-        }
-        if (apiUrl.endsWith("/")) {
-            apiUrl = apiUrl.substring(0, apiUrl.length() - 1);
-        }
-        logger.infov("GitHub Enterprise API URL: {}", apiUrl);
-
-        String authUrl = baseUrl + LocalGitHubIdentityProvider.AUTH_FRAGMENT;
-        String tokenUrl = baseUrl + LocalGitHubIdentityProvider.TOKEN_FRAGMENT;
-        String profileUrl = apiUrl + LocalGitHubIdentityProvider.PROFILE_FRAGMENT;
-
-        config.setAuthorizationUrl(authUrl);
-        config.setTokenUrl(tokenUrl);
-        config.setUserInfoUrl(profileUrl);
-
-        return (C) config;
+    public OAuth2IdentityProviderConfig createConfig() {
+        return new OAuth2IdentityProviderConfig();
     }
 
 }

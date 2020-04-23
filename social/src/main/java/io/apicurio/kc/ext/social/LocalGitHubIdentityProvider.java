@@ -18,6 +18,7 @@ package io.apicurio.kc.ext.social;
 
 import java.util.Iterator;
 
+import org.jboss.logging.Logger;
 import org.keycloak.broker.oidc.OAuth2IdentityProviderConfig;
 import org.keycloak.broker.provider.BrokeredIdentityContext;
 import org.keycloak.broker.provider.IdentityBrokerException;
@@ -35,16 +36,18 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
  */
 public class LocalGitHubIdentityProvider extends GitHubIdentityProvider {
 
+    private static final Logger logger = Logger.getLogger(LocalGitHubIdentityProvider.class);
+
     public static final String AUTH_FRAGMENT = "/login/oauth/authorize";
     public static final String TOKEN_FRAGMENT = "/login/oauth/access_token";
     public static final String PROFILE_FRAGMENT = "/user";
     public static final String EMAIL_FRAGMENT = "/user/emails";
-    
+
     private final String authUrl;
     private final String tokenUrl;
     private final String profileUrl;
     private final String emailUrl;
-    
+
     /**
      * Constructor.
      * @param session
@@ -64,7 +67,7 @@ public class LocalGitHubIdentityProvider extends GitHubIdentityProvider {
         if (baseUrl.endsWith("/")) {
             baseUrl = baseUrl.substring(0, baseUrl.length() - 1);
         }
-        System.out.println("(GitHub Local) Base URL: " + baseUrl);
+        logger.infov("GitHub Base URL: {0}", baseUrl);
 
         // The Base URL: https://api.github.com
         String apiUrl = config.getConfig().get("apiUrl");
@@ -77,13 +80,13 @@ public class LocalGitHubIdentityProvider extends GitHubIdentityProvider {
         if (apiUrl.endsWith("/")) {
             apiUrl = apiUrl.substring(0, apiUrl.length() - 1);
         }
-        System.out.println("(GitHub Local) API URL: " + apiUrl);
-        
+        logger.infov("GitHub API URL: {0}", apiUrl);
+
         authUrl = baseUrl + AUTH_FRAGMENT;
         tokenUrl = baseUrl + TOKEN_FRAGMENT;
         profileUrl = apiUrl + PROFILE_FRAGMENT;
         emailUrl = apiUrl + EMAIL_FRAGMENT;
-        
+
         config.setAuthorizationUrl(authUrl);
         config.setTokenUrl(tokenUrl);
         config.setUserInfoUrl(profileUrl);
