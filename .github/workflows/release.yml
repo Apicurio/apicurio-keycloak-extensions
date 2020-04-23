@@ -76,7 +76,7 @@ jobs:
         with:
           tag_name: ${{steps.metadata.outputs.release-version}}       
           release_name: ${{steps.metadata.outputs.release-version}}
-      - name: Generate Release Notes
+      - name: Generate Release Notes (Gren)
         run: gren release --token=${{ secrets.GITHUB_TOKEN }} --override --prefix=v             
       - name: Update Snapshot version ${{steps.metadata.outputs.snapshot-version}}
         run: |
