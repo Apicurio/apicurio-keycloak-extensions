@@ -1,3 +1,4 @@
 name: apicurio-keycloak-extensions
 release-version: 9.0.0.Final
 snapshot-version: 9.0.1-SNAPSHOT
+touch: true
