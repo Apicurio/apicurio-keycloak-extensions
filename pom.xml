@@ -80,7 +80,6 @@
         <version.source.plugin>2.4</version.source.plugin>
         <version.surefire.plugin>2.22.1</version.surefire.plugin>
         <version.surefire-report.plugin>2.22.1</version.surefire-report.plugin>
-        <version.org.sonatype.plugins.nexus-staging-maven-plugin>1.6.8</version.org.sonatype.plugins.nexus-staging-maven-plugin>
 
         <!-- Dependency Versions -->
         <version.com.fasterxml.jackson.core>2.9.8</version.com.fasterxml.jackson.core>
@@ -371,7 +370,6 @@
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>${version.org.sonatype.plugins.nexus-staging-maven-plugin}</version>
                         <extensions>true</extensions>
                         <configuration>
                             <serverId>ossrh</serverId>
@@ -382,7 +380,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>${version.maven-gpg-plugin}</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
