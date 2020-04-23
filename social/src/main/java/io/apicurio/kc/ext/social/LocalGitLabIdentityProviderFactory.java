@@ -31,11 +31,10 @@ public class LocalGitLabIdentityProviderFactory
         return "gitlab";
     }
 
+    @SuppressWarnings("unchecked") // safe b/c OIDCIdentityProviderConfig extends IdentityProviderModel
     @Override
-    public <C extends IdentityProviderModel> C createConfig() {
-        // TODO Issue #1
-        throw new UnsupportedOperationException("Code is not implemented. " +
-                "See https://github.com/Apicurio/apicurio-keycloak-extensions/issues/1");
+    public OIDCIdentityProviderConfig createConfig() {
+        return new OIDCIdentityProviderConfig();
     }
 
 }
